@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design's Favorites</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    .pill-btn { transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, box-shadow 120ms ease; }
+    .gallery-item { transition: transform 160ms ease, box-shadow 160ms ease; }
+    .gallery-item:hover { transform: translateY(-3px); }
+  </style>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  CATEGORY SCRIPTS                                          -->
+  <!--  Each designer adds ONE line here pointing to their        -->
+  <!--  category's config.js — all settings live in that file.   -->
+  <!--                                                            -->
+  <!--  Format:                                                   -->
+  <!--  <script src="images/your-folder/config.js"></script>      -->
+  <!--                                                            -->
+  <!--  See README.md for the full setup guide.                   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+
+
+  <!-- ─── end category scripts ─────────────────────────────── -->
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen font-sans antialiased">
+
+  <div class="max-w-screen-xl mx-auto px-6 py-16">
+
+    <header class="mb-12">
+      <p class="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-3">Gallery</p>
+      <h1 class="text-5xl font-extrabold tracking-tight text-white leading-none">Design's favorites</h1>
+    </header>
+
+    <div id="filter-bar" class="flex flex-wrap gap-2 mb-10"></div>
+
+    <p id="gallery-meta" class="text-sm text-zinc-500 mb-6 h-5"></p>
+
+    <div id="gallery" class="grid gap-3"
+         style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr))">
+    </div>
+
+  </div>
+
+  <script>
+    // Read categories registered by the config.js scripts above
+    const CATEGORIES = window.GALLERY_CATEGORIES || [];
+
+    const allImages = CATEGORIES.flatMap(cat =>
+      cat.images.map(file => ({
+        src: `images/${cat.folder}/${file}`,
+        category: cat.folder,
+        label: cat.label,
+        color: cat.color,
+      }))
+    );
+
+    let activeFilter = 'all';
+
+    function renderPills() {
+      const bar = document.getElementById('filter-bar');
+      bar.innerHTML = '';
+
+      const allBtn = document.createElement('button');
+      allBtn.className = [
+        'pill-btn inline-flex items-center gap-1.5',
+        'px-4 py-1.5 rounded-full text-sm font-medium border',
+        activeFilter === 'all'
+          ? 'bg-white text-zinc-900 border-white shadow-sm'
+          : 'bg-transparent text-zinc-400 border-zinc-700 hover:border-zinc-500 hover:text-zinc-200',
+      ].join(' ');
+      allBtn.innerHTML = `All <span class="text-xs opacity-60">${allImages.length}</span>`;
+      allBtn.addEventListener('click', () => setFilter('all'));
+      bar.appendChild(allBtn);
+
+      CATEGORIES.forEach(cat => {
+        const isActive = activeFilter === cat.folder;
+        const btn = document.createElement('button');
+        btn.className = 'pill-btn inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium border';
+
+        const applyInactive = () => {
+          btn.style.backgroundColor = 'transparent';
+          btn.style.borderColor = `${cat.color}70`;
+          btn.style.color = cat.color;
+          btn.style.boxShadow = '';
+        };
+        const applyActive = () => {
+          btn.style.backgroundColor = cat.color;
+          btn.style.borderColor = cat.color;
+          btn.style.color = '#fff';
+          btn.style.boxShadow = `0 0 0 3px ${cat.color}35`;
+        };
+        const applyHover = () => {
+          btn.style.backgroundColor = `${cat.color}22`;
+          btn.style.borderColor = cat.color;
+          btn.style.color = cat.color;
+        };
+
+        if (isActive) applyActive(); else applyInactive();
+
+        btn.addEventListener('mouseenter', () => { if (activeFilter !== cat.folder) applyHover(); });
+        btn.addEventListener('mouseleave', () => { if (activeFilter !== cat.folder) applyInactive(); });
+        btn.addEventListener('click', () => setFilter(cat.folder));
+
+        btn.innerHTML = `${cat.label} <span style="font-size:0.7rem;opacity:0.6">${cat.images.length}</span>`;
+        bar.appendChild(btn);
+      });
+    }
+
+    function renderGallery() {
+      const grid = document.getElementById('gallery');
+      grid.innerHTML = '';
+
+      const visible = activeFilter === 'all'
+        ? allImages
+        : allImages.filter(img => img.category === activeFilter);
+
+      if (CATEGORIES.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full flex flex-col items-center justify-center py-32 text-center gap-3">
+            <div class="w-16 h-16 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-2xl">🖼️</div>
+            <p class="text-zinc-200 font-semibold text-lg">No categories yet</p>
+            <p class="text-zinc-500 text-sm max-w-sm leading-relaxed">
+              Read <code class="text-zinc-400 bg-zinc-900 px-1.5 py-0.5 rounded text-xs">README.md</code> to add your category folder and register it with a
+              <code class="text-zinc-400 bg-zinc-900 px-1.5 py-0.5 rounded text-xs">&lt;script&gt;</code> tag in this file.
+            </p>
+          </div>`;
+        updateMeta(0);
+        return;
+      }
+
+      if (visible.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-24 text-center">
+            <p class="text-zinc-500 font-medium">No images in this category yet</p>
+          </div>`;
+        updateMeta(0);
+        return;
+      }
+
+      visible.forEach(img => {
+        const wrap = document.createElement('div');
+        wrap.className = 'gallery-item group relative aspect-[4/3] rounded-xl overflow-hidden bg-zinc-900 ring-1 ring-white/5 cursor-default';
+
+        const image = document.createElement('img');
+        image.src = img.src;
+        image.alt = img.label;
+        image.loading = 'lazy';
+        image.className = 'w-full h-full object-cover';
+        image.onerror = () => {
+          wrap.className = wrap.className.replace('cursor-default', '');
+          wrap.innerHTML = `<div class="w-full h-full flex items-center justify-center p-4"><span class="text-zinc-600 text-xs text-center break-all">${img.src}</span></div>`;
+        };
+
+        const badge = document.createElement('div');
+        badge.className = 'absolute bottom-0 left-0 right-0 px-3 pt-6 pb-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-150';
+        badge.style.background = 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%)';
+        badge.innerHTML = `<span class="text-xs font-semibold" style="color:${img.color}">${img.label}</span>`;
+
+        wrap.appendChild(image);
+        wrap.appendChild(badge);
+        grid.appendChild(wrap);
+      });
+
+      updateMeta(visible.length);
+    }
+
+    function setFilter(filter) {
+      activeFilter = filter;
+      renderPills();
+      renderGallery();
+    }
+
+    function updateMeta(count) {
+      const el = document.getElementById('gallery-meta');
+      if (count === 0) { el.textContent = ''; return; }
+      el.textContent = activeFilter === 'all'
+        ? `${count} image${count !== 1 ? 's' : ''} across ${CATEGORIES.length} ${CATEGORIES.length !== 1 ? 'categories' : 'category'}`
+        : `${count} image${count !== 1 ? 's' : ''} — ${CATEGORIES.find(c => c.folder === activeFilter)?.label}`;
+    }
+
+    renderPills();
+    renderGallery();
+  </script>
+</body>
+</html>
