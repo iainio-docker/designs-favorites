@@ -47,12 +47,10 @@ window.GALLERY_CATEGORIES.push({
   folder: 'your-folder-name',   // must match the folder you created
   label:  'Your Label',         // displayed on the filter pill
   color:  '#f472b6',            // pill color — any CSS hex color
-  images: [                     // filenames inside your folder
-    'photo1.jpg',
-    'screenshot.png',
-  ],
 });
 ```
+
+Images are discovered automatically — just drop files into your folder and refresh. No need to list them anywhere.
 
 Pick any color you like for your pill. Some suggestions:
 `#f472b6` pink · `#818cf8` indigo · `#34d399` emerald · `#fb923c` orange · `#38bdf8` sky · `#a78bfa` violet · `#facc15` yellow
@@ -84,10 +82,10 @@ Each designer only touches their own line — this keeps git conflicts to a mini
 
 ### 4. Refresh the browser
 
-Your category pill and images will appear immediately. If something looks wrong:
+Your category pill appears and images are discovered automatically from the folder. If something looks wrong:
 
 - Check the folder name in `config.js` matches the actual folder name exactly
-- Make sure the filenames in the `images` array match the files in your folder (case-sensitive)
+- Make sure you're running via `python3 -m http.server` (not opening the file directly) — auto-discovery requires a server
 - Open the browser console for any load errors
 
 ---
@@ -118,10 +116,7 @@ window.GALLERY_CATEGORIES.push({
   folder: 'motion-refs',
   label:  'Motion Refs',
   color:  '#38bdf8',
-  images: [
-    'spring-easing.gif',
-    'ios-transitions.mp4',
-    'scroll-parallax.png',
-  ],
 });
 ```
+
+Drop any image files into `images/motion-refs/` and they'll show up automatically on refresh.

@@ -34,7 +34,7 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
 
 
-  <script src="images/workspace/config.js"></script>
+  <script src="images/landscape/config.js"></script>
   <!-- ─── end category scripts ─────────────────────────────── -->
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen font-sans antialiased">
@@ -57,18 +57,25 @@
   </div>
 
   <script>
-    // Read categories registered by the config.js scripts above
     const CATEGORIES = window.GALLERY_CATEGORIES || [];
+    const IMAGE_EXTS = /\.(jpg|jpeg|png|gif|webp|avif|svg)$/i;
 
-    const allImages = CATEGORIES.flatMap(cat =>
-      cat.images.map(file => ({
-        src: `images/${cat.folder}/${file}`,
-        category: cat.folder,
-        label: cat.label,
-        color: cat.color,
-      }))
-    );
+    // Auto-discover images by fetching the folder's directory listing
+    async function discoverImages(folder) {
+      try {
+        const res = await fetch(`images/${folder}/`);
+        if (!res.ok) return [];
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        return [...doc.querySelectorAll('a[href]')]
+          .map(a => a.getAttribute('href'))
+          .filter(href => IMAGE_EXTS.test(href));
+      } catch {
+        return [];
+      }
+    }
 
+    let allImages = [];
     let activeFilter = 'all';
 
     function renderPills() {
@@ -89,6 +96,7 @@
 
       CATEGORIES.forEach(cat => {
         const isActive = activeFilter === cat.folder;
+        const count = allImages.filter(i => i.category === cat.folder).length;
         const btn = document.createElement('button');
         btn.className = 'pill-btn inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium border';
 
@@ -111,12 +119,10 @@
         };
 
         if (isActive) applyActive(); else applyInactive();
-
         btn.addEventListener('mouseenter', () => { if (activeFilter !== cat.folder) applyHover(); });
         btn.addEventListener('mouseleave', () => { if (activeFilter !== cat.folder) applyInactive(); });
         btn.addEventListener('click', () => setFilter(cat.folder));
-
-        btn.innerHTML = `${cat.label} <span style="font-size:0.7rem;opacity:0.6">${cat.images.length}</span>`;
+        btn.innerHTML = `${cat.label} <span style="font-size:0.7rem;opacity:0.6">${count}</span>`;
         bar.appendChild(btn);
       });
     }
@@ -146,7 +152,7 @@
       if (visible.length === 0) {
         grid.innerHTML = `
           <div class="col-span-full py-24 text-center">
-            <p class="text-zinc-500 font-medium">No images in this category yet</p>
+            <p class="text-zinc-500 font-medium">No images in this category yet — drop files into the folder and refresh</p>
           </div>`;
         updateMeta(0);
         return;
@@ -162,7 +168,6 @@
         image.loading = 'lazy';
         image.className = 'w-full h-full object-cover';
         image.onerror = () => {
-          wrap.className = wrap.className.replace('cursor-default', '');
           wrap.innerHTML = `<div class="w-full h-full flex items-center justify-center p-4"><span class="text-zinc-600 text-xs text-center break-all">${img.src}</span></div>`;
         };
 
@@ -193,8 +198,24 @@
         : `${count} image${count !== 1 ? 's' : ''} — ${CATEGORIES.find(c => c.folder === activeFilter)?.label}`;
     }
 
-    renderPills();
-    renderGallery();
+    async function init() {
+      const discovered = await Promise.all(
+        CATEGORIES.map(async cat => {
+          const files = await discoverImages(cat.folder);
+          return files.map(file => ({
+            src: `images/${cat.folder}/${file}`,
+            category: cat.folder,
+            label: cat.label,
+            color: cat.color,
+          }));
+        })
+      );
+      allImages = discovered.flat();
+      renderPills();
+      renderGallery();
+    }
+
+    init();
   </script>
 </body>
 </html>
