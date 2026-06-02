@@ -39,6 +39,15 @@
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen font-sans antialiased">
 
+  <!-- shown only when opened via file:// instead of a local server -->
+  <div id="file-warning" class="hidden bg-amber-950 border-b border-amber-800 px-6 py-3">
+    <p class="text-amber-300 text-sm">
+      <span class="font-semibold">Needs a local server to load images.</span>
+      Run <code class="bg-amber-900 px-1.5 py-0.5 rounded text-amber-200">python3 -m http.server 8080</code>
+      in the project folder, then open <code class="bg-amber-900 px-1.5 py-0.5 rounded text-amber-200">http://localhost:8080</code>
+    </p>
+  </div>
+
   <div class="max-w-screen-xl mx-auto px-6 py-16">
 
     <header class="mb-12">
@@ -199,6 +208,10 @@
     }
 
     async function init() {
+      if (location.protocol === 'file:') {
+        document.getElementById('file-warning').classList.remove('hidden');
+      }
+
       const discovered = await Promise.all(
         CATEGORIES.map(async cat => {
           const files = await discoverImages(cat.folder);
