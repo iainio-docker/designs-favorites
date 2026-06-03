@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background -->
+  <rect width="200" height="200" rx="20" fill="#fff5f0"/>
+
+  <!-- Plate -->
+  <ellipse cx="100" cy="148" rx="68" ry="16" fill="#e8e0d0"/>
+  <ellipse cx="100" cy="145" rx="68" ry="16" fill="#f5f0e8"/>
+  <ellipse cx="100" cy="143" rx="62" ry="12" fill="#fafaf8"/>
+
+  <!-- Pasta sauce base -->
+  <ellipse cx="100" cy="138" rx="52" ry="10" fill="#e8472a" opacity="0.85"/>
+
+  <!-- Pasta noodles (spaghetti style) -->
+  <g fill="none" stroke-linecap="round" stroke-width="3.5">
+    <path d="M55 140 Q70 108 90 120 Q110 132 125 100 Q138 72 148 95" stroke="#f0d080"/>
+    <path d="M58 135 Q75 103 95 115 Q115 127 128 97 Q141 68 150 90" stroke="#e8c86a"/>
+    <path d="M62 143 Q80 112 100 124 Q118 136 132 108 Q144 82 152 102" stroke="#f5d888"/>
+    <path d="M50 138 Q65 105 85 118 Q105 130 118 98 Q131 68 142 92" stroke="#e0bc5e"/>
+    <path d="M68 144 Q85 115 104 128 Q122 140 136 112 Q148 86 155 107" stroke="#f0d080"/>
+    <path d="M52 132 Q68 98 89 112 Q110 124 122 92 Q134 62 144 85" stroke="#e8c86a"/>
+  </g>
+
+  <!-- Sauce dollops on top -->
+  <circle cx="90" cy="122" r="8" fill="#e8472a" opacity="0.9"/>
+  <circle cx="110" cy="118" r="6" fill="#d63a1e" opacity="0.9"/>
+  <circle cx="100" cy="130" r="7" fill="#e8472a" opacity="0.85"/>
+  <circle cx="78" cy="128" r="5" fill="#d63a1e" opacity="0.8"/>
+  <circle cx="122" cy="126" r="5.5" fill="#e8472a" opacity="0.85"/>
+
+  <!-- Basil leaves -->
+  <g fill="#4a9e4e">
+    <ellipse cx="95" cy="115" rx="7" ry="4" transform="rotate(-30 95 115)"/>
+    <ellipse cx="113" cy="112" rx="6" ry="3.5" transform="rotate(20 113 112)"/>
+  </g>
+
+  <!-- Parmesan cheese sprinkles -->
+  <g fill="white" opacity="0.85">
+    <rect x="86" y="118" width="4" height="2" rx="1" transform="rotate(15 86 118)"/>
+    <rect x="105" y="120" width="3" height="1.5" rx="0.75" transform="rotate(-10 105 120)"/>
+    <rect x="96" y="124" width="4" height="2" rx="1" transform="rotate(25 96 124)"/>
+    <rect x="116" y="122" width="3" height="1.5" rx="0.75" transform="rotate(5 116 122)"/>
+    <rect x="82" y="125" width="3" height="1.5" rx="0.75" transform="rotate(-20 82 125)"/>
+  </g>
+
+  <!-- Label -->
+  <text x="100" y="185" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#c03a20">Pasta</text>
+</svg>
