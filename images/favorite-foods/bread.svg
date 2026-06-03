@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background -->
+  <rect width="200" height="200" rx="20" fill="#fff8ee"/>
+
+  <!-- Bread loaf body -->
+  <path d="M30 145 Q30 165 100 165 Q170 165 170 145 L165 120 Q160 95 100 90 Q40 95 35 120 Z" fill="#c8762c"/>
+
+  <!-- Bread top dome -->
+  <ellipse cx="100" cy="105" rx="65" ry="30" fill="#e8913a"/>
+
+  <!-- Bread highlight/sheen -->
+  <ellipse cx="85" cy="95" rx="25" ry="12" fill="#f0a84e" opacity="0.6"/>
+
+  <!-- Bread crust bottom line -->
+  <path d="M35 145 Q100 152 165 145" fill="none" stroke="#a85e20" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Score lines on bread -->
+  <path d="M70 100 Q68 120 70 138" fill="none" stroke="#b86825" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <path d="M100 98 Q98 120 100 140" fill="none" stroke="#b86825" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <path d="M130 100 Q128 120 130 138" fill="none" stroke="#b86825" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Seeds on top -->
+  <g fill="#8b5e1a" opacity="0.8">
+    <ellipse cx="83" cy="88" rx="3" ry="1.5" transform="rotate(-20 83 88)"/>
+    <ellipse cx="95" cy="84" rx="3" ry="1.5" transform="rotate(10 95 84)"/>
+    <ellipse cx="108" cy="85" rx="3" ry="1.5" transform="rotate(-5 108 85)"/>
+    <ellipse cx="118" cy="90" rx="3" ry="1.5" transform="rotate(25 118 90)"/>
+    <ellipse cx="75" cy="95" rx="3" ry="1.5" transform="rotate(15 75 95)"/>
+    <ellipse cx="100" cy="93" rx="3" ry="1.5" transform="rotate(-30 100 93)"/>
+    <ellipse cx="125" cy="96" rx="3" ry="1.5" transform="rotate(5 125 96)"/>
+  </g>
+
+  <!-- Steam wisps -->
+  <g fill="none" stroke="#e8913a" stroke-width="2" stroke-linecap="round" opacity="0.4">
+    <path d="M88 78 Q85 71 88 64 Q91 57 88 50"/>
+    <path d="M112 78 Q109 71 112 64 Q115 57 112 50"/>
+  </g>
+
+  <!-- Label -->
+  <text x="100" y="185" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#a85e20">Bread</text>
+</svg>
