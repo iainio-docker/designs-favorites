@@ -122,10 +122,10 @@ Designers, please schedule a 30min sync to partner with your eng colleague to se
 | Designer | Eng Partner |
 |----------|-------------|
 | @mia | @rob.murray |
-| @remy | @patrick |
-| @sean | @manu |
-| @javier.alonso | @nicolas |
-| @prashant | @ignasi |
+| @rcjsuen | @patrick.port |
+| @sean | @Manu |
+| @javier.alonso | @ndeloof |
+| @Prashant Khanchandani | @ignasi |
 
 By the next studio in 2 weeks, we'll spend a few minutes reviewing all the photos we merged into the project.
 
