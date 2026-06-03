@@ -10,7 +10,9 @@ Open **http://localhost:8080**
 
 ---
 
-## 1. Add a category
+## Goal 1: Adding your category
+
+Use the agentic platform to submit a verified commit and PR for adding your category.
 
 Create a folder under `images/` and add a `config.js` inside it:
 
@@ -51,9 +53,6 @@ images/
     screenshot.png
 ```
 
-<<<<<<< HEAD
-Refresh the browser and they'll appear automatically. Supported formats: jpg, png, gif, webp, avif, svg.
-=======
 Folder names should be lowercase, no spaces (use hyphens): `color-theory`, `type-specimens`, `motion-refs`.
 
 ---
@@ -161,4 +160,3 @@ window.GALLERY_CATEGORIES.push({
 ```
 
 Drop any image files into `images/motion-refs/` and they'll show up automatically on refresh.
->>>>>>> 5cf02aa (docs: add Goal 2 section with Design/Eng pairings)
