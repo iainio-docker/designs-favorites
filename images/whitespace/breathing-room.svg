@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background: lots of whitespace -->
+  <rect width="200" height="200" rx="20" fill="#ffffff"/>
+  <!-- Subtle frame -->
+  <rect x="0.5" y="0.5" width="199" height="199" rx="20" fill="none" stroke="#eef2f5" stroke-width="1"/>
+
+  <!-- A single deliberate dot, off-center, anchoring the composition -->
+  <circle cx="68" cy="78" r="6" fill="#38bdf8"/>
+
+  <!-- A thin tracking line to suggest measured space -->
+  <line x1="68" y1="100" x2="68" y2="135" stroke="#cbe9f6" stroke-width="1" stroke-dasharray="2 4"/>
+  <line x1="48" y1="78" x2="20" y2="78" stroke="#cbe9f6" stroke-width="1" stroke-dasharray="2 4"/>
+
+  <!-- A single typographic mark to imply content held back -->
+  <text x="68" y="155" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#7aa6bf" letter-spacing="3">less is more</text>
+
+  <!-- Label -->
+  <text x="100" y="188" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#0c7ca8">White Space</text>
+</svg>
