@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Sky background -->
+  <rect width="200" height="200" rx="20" fill="#cfeefb"/>
+
+  <!-- Sun -->
+  <circle cx="142" cy="68" r="18" fill="#fcd76b"/>
+  <circle cx="142" cy="68" r="12" fill="#fde9a0"/>
+
+  <!-- Distant back mountain (lighter) -->
+  <path d="M0 150 L40 95 L75 130 L110 80 L150 135 L200 90 L200 155 L0 155 Z" fill="#7fb9a4"/>
+
+  <!-- Front mountain (darker, snowcap) -->
+  <path d="M0 165 L35 115 L60 145 L95 95 L135 145 L170 120 L200 165 Z" fill="#34897a"/>
+  <!-- Snow caps -->
+  <path d="M88 102 L95 95 L103 104 L99 107 L96 103 L92 108 Z" fill="#ffffff" opacity="0.95"/>
+  <path d="M30 122 L35 115 L42 124 L37 128 L34 122 Z" fill="#ffffff" opacity="0.95"/>
+
+  <!-- Lake / foreground -->
+  <rect x="0" y="155" width="200" height="25" fill="#5fbfd6"/>
+  <!-- Lake ripples -->
+  <g stroke="#a8e0ec" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.85">
+    <path d="M20 162 Q30 160 40 162"/>
+    <path d="M70 168 Q82 166 94 168"/>
+    <path d="M120 163 Q132 161 144 163"/>
+    <path d="M155 170 Q168 168 180 170"/>
+  </g>
+
+  <!-- Tiny pine trees on the shore -->
+  <g fill="#225c4e">
+    <path d="M52 155 L57 142 L62 155 Z"/>
+    <path d="M58 155 L64 138 L70 155 Z"/>
+    <path d="M150 155 L156 144 L162 155 Z"/>
+  </g>
+
+  <!-- Cloud -->
+  <g fill="#ffffff" opacity="0.92">
+    <ellipse cx="55" cy="55" rx="18" ry="8"/>
+    <ellipse cx="68" cy="52" rx="14" ry="9"/>
+    <ellipse cx="44" cy="58" rx="10" ry="6"/>
+  </g>
+
+  <!-- Label -->
+  <text x="100" y="192" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#1f5e51">Mountains</text>
+</svg>
