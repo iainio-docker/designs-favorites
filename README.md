@@ -121,7 +121,7 @@ Designers, please schedule a 30min sync to partner with your eng colleague to se
 
 | Designer | Eng Partner |
 |----------|-------------|
-| @mia | @rob |
+| @mia | @rob.murray |
 | @remy | @patrick |
 | @sean | @manu |
 | @javier | @nicolas |
