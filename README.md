@@ -90,6 +90,26 @@ Your category pill appears and images are discovered automatically from the fold
 
 ---
 
+## Goal 2: Add images to gallery
+
+Add 1 image to each category through a PR with verified commits using a local sandbox. Add a table for "Design/Eng partners".
+
+### Pairings
+
+Designers, please schedule a 30min sync to partner with your eng colleague to setup sbx verified commits.
+
+| Designer | Eng Partner |
+|----------|-------------|
+| Mia | Rob |
+| @remy | @patrick |
+| @sean | @manu |
+| @javier | @nicolas |
+| @prashant | @ignasi |
+
+By the next studio in 2 weeks, we'll spend a few minutes reviewing all the photos we merged into the project.
+
+---
+
 ## Folder structure reference
 
 ```
