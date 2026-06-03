@@ -2,5 +2,5 @@ window.GALLERY_CATEGORIES = window.GALLERY_CATEGORIES || [];
 window.GALLERY_CATEGORIES.push({
   folder: 'sports',
   label:  'Sports',
-  color:  '#38bdf8',
+  color:  '#0ea5e9',
 });
