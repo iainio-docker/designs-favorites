@@ -122,7 +122,7 @@ Designers, please schedule a 30min sync to partner with your eng colleague to se
 | Designer | Eng Partner |
 |----------|-------------|
 | @mia | @rob.murray |
-| @rcjsuen | @patrick.port |
+| @patrick.port | @rcjsuen |
 | @sean | @Manu |
 | @javier.alonso | @ndeloof |
 | @Prashant Khanchandani | @ignasi |
