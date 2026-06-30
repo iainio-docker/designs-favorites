@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background -->
+  <rect width="200" height="200" rx="20" fill="#fff4e6"/>
+
+  <!-- Left glass: beer mug body -->
+  <path d="M55 70 L62 150 Q63 158 72 158 L96 158 Q105 158 106 150 L113 70 Z" fill="#f0b040"/>
+  <!-- Left mug shine -->
+  <path d="M66 78 L72 145" fill="none" stroke="#fad08a" stroke-width="4" stroke-linecap="round" opacity="0.75"/>
+  <!-- Left foam -->
+  <path d="M52 72 Q55 58 65 62 Q72 50 82 58 Q92 48 100 60 Q110 52 116 64 Q120 70 113 75 Z" fill="#fefcf4"/>
+  <circle cx="62" cy="60" r="5" fill="#fefcf4"/>
+  <circle cx="78" cy="55" r="5" fill="#fefcf4"/>
+  <circle cx="95" cy="55" r="5" fill="#fefcf4"/>
+  <circle cx="108" cy="60" r="5" fill="#fefcf4"/>
+  <!-- Left handle -->
+  <path d="M113 85 Q135 90 135 115 Q135 140 113 145" fill="none" stroke="#f0b040" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Right glass: beer mug body, tilted toward left -->
+  <g transform="rotate(15 145 110)">
+    <path d="M125 70 L132 150 Q133 158 142 158 L166 158 Q175 158 176 150 L183 70 Z" fill="#e89028"/>
+    <path d="M136 78 L142 145" fill="none" stroke="#f4b870" stroke-width="4" stroke-linecap="round" opacity="0.75"/>
+    <path d="M122 72 Q125 58 135 62 Q142 50 152 58 Q162 48 170 60 Q180 52 186 64 Q190 70 183 75 Z" fill="#fefcf4"/>
+    <circle cx="132" cy="60" r="5" fill="#fefcf4"/>
+    <circle cx="148" cy="55" r="5" fill="#fefcf4"/>
+    <circle cx="165" cy="55" r="5" fill="#fefcf4"/>
+    <circle cx="178" cy="60" r="5" fill="#fefcf4"/>
+    <path d="M183 85 Q205 90 205 115 Q205 140 183 145" fill="none" stroke="#e89028" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <!-- Sparkles at the clink point -->
+  <g fill="#fb923c">
+    <path d="M118 75 L122 82 L130 84 L122 86 L118 93 L114 86 L106 84 L114 82 Z"/>
+    <circle cx="105" cy="68" r="2.5"/>
+    <circle cx="132" cy="95" r="2"/>
+    <circle cx="98" cy="92" r="1.8"/>
+  </g>
+
+  <!-- Label -->
+  <text x="100" y="185" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#c2670a">Cheers</text>
+</svg>

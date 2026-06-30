@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background -->
+  <rect width="200" height="200" rx="20" fill="#fff0f0"/>
+
+  <!-- Apple body (two-lobed silhouette) -->
+  <path d="M100 60
+           C 75 55 50 70 50 110
+           C 50 145 75 170 100 170
+           C 125 170 150 145 150 110
+           C 150 70 125 55 100 60 Z" fill="#e2342b"/>
+
+  <!-- Apple subtle shading on right -->
+  <path d="M125 70 C 145 80 150 110 145 140 C 140 158 125 168 110 168 C 130 162 142 145 145 120 C 147 100 140 82 125 70 Z" fill="#b81d16" opacity="0.5"/>
+
+  <!-- Apple highlight on upper left -->
+  <ellipse cx="80" cy="90" rx="14" ry="20" fill="#ff7a6a" opacity="0.55" transform="rotate(-25 80 90)"/>
+  <ellipse cx="76" cy="86" rx="6" ry="9" fill="#ffb0a0" opacity="0.75" transform="rotate(-25 76 86)"/>
+
+  <!-- Dip at top -->
+  <path d="M88 62 Q100 52 112 62" fill="#e2342b"/>
+  <path d="M88 62 Q100 56 112 62" fill="none" stroke="#a01810" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Stem -->
+  <path d="M100 55 Q102 42 108 35" fill="none" stroke="#5b3a1c" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Leaf -->
+  <path d="M108 38 Q125 30 132 42 Q120 50 108 45 Z" fill="#4a9e4e"/>
+  <path d="M110 41 Q122 41 130 43" fill="none" stroke="#2f6e34" stroke-width="1.2" opacity="0.7"/>
+
+  <!-- Label -->
+  <text x="100" y="190" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#9d1810">Apple</text>
+</svg>
